@@ -1,0 +1,40 @@
+.container{
+    background-color: rgb(255, 255, 255);
+    position:fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.content{
+    top:28%;
+    left:37%;
+    height:300px;
+    text-align: center;
+    padding:50px;
+    justify-content: center;
+    align-items: center;
+    background-color: #5dfff1;
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 10px; 
+    position: relative;
+    max-width: 300px;
+}
+hr{
+   color:black;
+   border:1px solid black;
+}
+#submit{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

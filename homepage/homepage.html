@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage.css">
+    <script src="homepage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" src="D:\Apartment-E-Commerse\web\fonts\gotham-rounded"> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="logo" onclick="openProfilePopup()"><img src="profile.webp" alt="Profile"></button>
+    <a class="orderhistory" href="orders">Order History</a>
+    <a class="yourproducts" href="add.html">Your Products</a>
+    <div class="headdiv">
+        <h1 class="head">Welcome to your store</h1>
+    </div>
+    <div class="container">
+        <div class="holders">
+            <div class="product">
+                <button>
+                <a href="pros?id=car">
+                    <div><img src="car.jpg"alt=":( error"></div>
+                    <h4>Car</h4>
+                </a>
+            </button>
+                
+            </div>
+            <div class="product">
+                <button>
+                    <a href="pros?id=bike">
+                    <div><img src="bike.jpg"alt=":( error"></div>
+                    <h4>Bike</h4>
+                </a>
+                </button>
+            </div>
+            
+            <div class="product">
+                <button>
+                    <a href="pros?id=utensils">
+                    <div><img src="p5.jpg"alt=":( error"></div>
+                    <h4>utensils</h4>
+                </a>
+                </button>
+            </div>
+        </div>
+        <div class="holders">
+            
+            <div class="product">
+                <button>
+                    <a href="pros?id=cloths" id="acc">
+                    <div><img src="cloths.jpg"alt=":( error"></div>
+                    <h4>cloths</h4>
+                </a>
+                </button>
+            </div>
+            <div class="product">
+                <button>
+                    <a href="pros?id=accessories">
+                    <div><img src="accessories.jpg"alt=":( error"></div>
+                    <h4>accessories</h4>
+                </a>
+                </button>
+            </div>
+            <div class="product">
+                <button>
+                    <a href="pros?id=stationary">
+                    <div><img src="sta.jpg"alt=":( error"></div>
+                    <h4>stationary</h4>
+
+                </a>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    <div id="profilePopup" class="popup-container">
+        <div class="popup-content">
+            <!-- <button class="close-btn" onclick="closeProfilePopup()">X</button> -->
+            <button class="back-btn" onclick="closeProfilePopup()">Back</button>
+            <form id="profileForm" action = "/edit" method="POST">
+                <div class="profile-container">
+                    <!-- Content for the profile page goes here -->
+                    <div class="welcome">Hello, User</div>
+                    <button type="button" class="edit-button" onclick="enableEditing()">Edit Details</button>
+                    <hr>
+                    <div class="details">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" disabled value="John Doe">
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" disabled value="john@example.com">
+
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" disabled value="123456">
+                        <span class="show-password" onclick="togglePassword()">Show</span>
+                    </div>
+                    <button class="logout"type="button" onclick="logout()">Logout</button>
+                    <button type="submit" id="saveChanges" disabled>Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

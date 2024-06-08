@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="buy.css">
+    <title>Buy</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <form action="/buy" method="post">
+            <h2>Delivery address</h2>
+            <input type="text" id="add" name="add" required>
+            <hr>
+            <h2>Payment options</h2>
+            
+                <input id="payment" name="cash_on_delivery" value="cod" type="radio" required>
+                <label for="payment">Cash On Delivery</label><br><br>
+                Check The Details and <br>click on place order<br><br>
+                <input id="submit" name="submit" value="Place order"type="submit">
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* @font-face {
+    font-family: gotham rounded;
+    src:local(D:\Apartment-E-Commerse\web\fonts\gotham-rounded);
+} */
+body{
+    background-color: #d8c3a5;
+}
+.headdiv{
+    /* background-color: linear-gradient(to bottom right,#EAE7DC 0%,#E85A4F 87%); */
+    background: linear-gradient(to bottom right, #d8c3a5 50%, #E85A4F 90%);
+    height:350px;
+    width:100%;
+    border:10px;
+    border-color: black;
+    border-bottom-right-radius: 100%;
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    float:top;
+}
+.orderhistory,.yourproducts{
+    float:right;
+    margin-right:20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right:40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+.logo {
+    border-radius:100%;
+    width:4vw;
+    height:4vw;
+    padding-top:10px;
+    position: fixed;
+}
+.logo img{
+    border-radius:100%;
+    width:100%;
+    height:100%;
+}
+.head{
+    font-family:gotham rounded;
+    text-align: center;
+    padding-left:200px;
+    font-size:5vw;
+    color:#444458;
+    font-size:auto;
+    position:absolute;
+}
+.container{
+    background: linear-gradient(to top left, #d8c3a5 50%, #E85A4F 90%);
+    border-top-left-radius: 100%;
+    /* border-top-right-radius: -100%; */
+    margin-top:0%;
+    height:350px;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.holders{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* margin-top:250px; */
+}
+.containers :first-child{
+    margin-top:250px;
+}
+.product{
+    display: flex;
+    flex-direction: column;
+    width:300px;
+    height:300px;
+    border:100px;
+    border-color: black;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.product button{
+    border-radius: 3%;
+    border-width: 1px;
+    background-color: #f0e3ba;
+}
+.product div h4{
+    text-align: center;
+    padding-left:50%;
+}
+.product div img{
+    width:100%;
+    height:100%;
+    padding-top:1%;
+}
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 10px; 
+    position: relative;
+}
+ .back-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 10px;
+} 
+
+.back-btn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.welcome {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.edit-button, #saveChanges,.logout {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.details {
+    margin-bottom: 20px;
+}
+
+input, span {
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="password"] {
+    width: calc(100% - 22px);
+}
+
+input[disabled] {
+    background-color: #f2f2f2;
+    color: #555;
+}
+
+.show-password {
+    cursor: pointer;
+    color: blue;
+}

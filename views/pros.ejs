@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="pros.css" type="text/css"> 
+</head>
+<body>
+  <div id="backg">
+    <section id="pros">
+    <div class="container">
+        <% books.forEach(book => { %>
+          <div id="<%= book.pid %>">
+          <a href="index?id=<%= book.pid %>">
+          <div class="bookmain" data-title="<%= book.pname %>" data-author="<%= book.pdesc %>" data-price="<%= book.price %>">
+            <img src="data:image/jpeg;base64,<%= book.img.toString('base64') %>" alt="<%= book.pname %> Image">
+            <h3 class="book-title"><%= book.pname %></h3>
+            <!-- <form action="/addToCart/<%= book.id %>" method="post">
+              <button type="submit">Add to Cart</button>
+            </form> -->
+          </div>
+        </a>
+      </div>
+        <% }); %>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

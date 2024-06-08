@@ -1,0 +1,42 @@
+<!-- order_history.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="oejs.css" type="text/css"> 
+</head>
+<body>
+    <h1>Order History</h1>
+    <section id="orders">
+    <% if (orders.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.ordernum %></td>
+                        <td><%= order.odate %></td>
+                        <td><%=order.pname %></td>
+                        <td>$<%= order.price %></td>
+                        <td><%= order.status %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No orders found.</p>
+    <% } %>
+</section>
+</body>
+</html>

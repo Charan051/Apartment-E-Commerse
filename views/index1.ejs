@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="productejs.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Store</h1>
+    </header>
+    <main>
+        <section id="products">
+            <!-- Product cards will be displayed here -->
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <!-- <img src="<%= product.img %>" alt="<%= product.pname %>" class="product-image"> -->
+                    <!-- console.log(products.img) -->
+                    <% if (product.img) { %>
+                        <img src="data:image/jpeg;base64,<%= product.img.toString('base64') %>" alt="<%= product.pname %> Image"  class="product-image">
+                    <% } %>                 <div class="product-details">
+                        <h2 class="product-name"><%= product.pname %></h2>
+                        <p class="product-price">Price: <%= product.price %>$</p>
+                        <p class="product-description">Product Discription: <%= product.pdesc %></p>
+                        <button class="bt1" id="openPopup">buy</button>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+    <div id="popupContainer" class="container">
+        <!-- Popup content -->
+        <div class="content">
+            <span class="close" id="closePopup">&times;</span> <!-- Button to close the popup -->
+            <form action="/buy" method="post">
+                <h2>Delivery address</h2>
+                <input type="text" id="add" name="add" required>
+                <hr>
+                <h2>Payment options</h2>
+                <input id="payment" name="cash_on_delivery" value="cod" type="radio" required>
+                <label for="payment">Cash On Delivery</label><br><br>
+                Check The Details and <br>click on place order<br><br>
+                <input id="submit" name="submit" value="Place order" type="submit">
+            </form>
+        </div>
+    </div>
+
+    <!-- Script to handle popup functionality -->
+    <script>
+        // Get the popup container
+        var popupContainer = document.getElementById("popupContainer");
+        
+        // Get the button that opens the popup
+        var openPopupBtn = document.getElementById("openPopup");
+
+        // Get the button that closes the popup
+        var closePopupBtn = document.getElementById("closePopup");
+
+        // When the user clicks the button, open the popup
+        openPopupBtn.onclick = function() {
+            popupContainer.style.display = "block";
+        }
+
+        // When the user clicks on the close button, close the popup
+        closePopupBtn.onclick = function() {
+            popupContainer.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the popup, close it
+        window.onclick = function(event) {
+            if (event.target == popupContainer) {
+                popupContainer.style.display = "none";
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Store. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

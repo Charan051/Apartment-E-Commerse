@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="add.css"> <!-- Add your CSS file -->
+
+
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form action="/add" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="pname">Product Name:</label>
+            <input type="text" id="name" name="pname" required>
+        </div>
+        <div>
+            <label for="pdesc">Description:</label>
+            <textarea id="description" name="pdesc" required></textarea>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" min="0" step="10" required>
+        </div>
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+        </div>
+        <div>
+            <label for="contact">Phone Number:</label>
+            <input type="text" id="phno" name="contact" required>
+        </div>
+        <div>
+            
+            <label for="cat">Choose a category:</label>
+            <select name="cat" id="cat">
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+                <option value="utensils">Utensils</option>
+                <option value="clothes">Clothes</option>
+                <option value="accessories">Acessories</option>
+                <option value="stationary">Stationary</option>
+            </select>
+        </div>
+        <div>
+            <label for="image">Product Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="submit">Add Product</button>
+    </form>
+    <div id="urs">
+        <script>
+            // Fetch product data from the server
+            fetch('/urp')
+                .then(response => response.json())
+                .then(products => {
+                    const container = document.getElementById('urs');
+                    
+                    // Loop through each product
+                    products.forEach(product => {
+                        // Create product container
+                        const productDiv = document.createElement('div');
+                        productDiv.classList.add('product-item');
+                        productDiv.style.display = 'flex'; // Set display to flex for horizontal alignment
+                        
+                        // Create image element
+                        const imgElement = document.createElement('img');
+                        imgElement.src = 'data:image/jpeg;base64,' + product.img;
+                        imgElement.alt = product.pname;
+                        imgElement.style.width = '70px'; // Adjust size here
+                        imgElement.style.height = '70px'; // Adjust size here
+                        imgElement.style.marginRight = '10px';
+                        productDiv.appendChild(imgElement);
+        
+                        // Create product name element
+                        const nameElement = document.createElement('p');
+                        nameElement.textContent = product.pname;
+                        nameElement.style.marginRight = 'auto'; // Pushes remove button to the right
+                        productDiv.appendChild(nameElement);
+        
+                        // Create remove button
+                        const removeButton = document.createElement('button');
+                        removeButton.textContent = 'Remove';
+                        // Assign product ID (pid) as the id attribute
+                        removeButton.id = product.pid;
+                        removeButton.onclick = function() {
+                            // Extract the product ID from the id attribute of the remove button
+                            const productId = this.id;
+
+                            // Log the data being sent in the fetch request
+                            console.log('Request body:', JSON.stringify({ pid: productId }));
+
+                            // Confirm before removing
+                            if (confirm('Are you sure you want to remove this product?')) {
+                                // Send request to remove product from server
+                                fetch('/removeProduct', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ pid: productId }) // Include pid in the request body
+                                })
+                                .then(response => {
+                                    if (response.ok) {
+                                        // Remove product item from UI
+                                        productDiv.remove(); // This line removes the product from the UI
+                                    } else {
+                                        alert('Error removing product');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error removing product:', error);
+                                    alert('Error removing product');
+                                });
+                            }
+                        };
+                        productDiv.appendChild(removeButton);
+        
+                        // Append product container to main container
+                        container.appendChild(productDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching product data:', error);
+                    alert('Error fetching product data');
+                });
+        </script>
+    
+    </div>
+</body>
+</html>
